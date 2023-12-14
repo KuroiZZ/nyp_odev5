@@ -1,4 +1,6 @@
-﻿namespace nyp_odev5_10point3
+﻿using System;
+
+namespace nyp_odev5_10point3
 {
     internal class Program
     {
@@ -7,4 +9,4 @@
             Console.WriteLine("Hello, World!");
         }
     }
-}
+}// burası yeni yazıldı
