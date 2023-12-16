@@ -17,7 +17,6 @@ namespace Odev
         {
             playGround = new int[3,3] {{0,0,0},{0,0,0},{0,0,0}};
         }
-
         internal bool Move(int[] square,ref bool player1,ref int turn)
         {
             bool illegalMove = false;
@@ -44,7 +43,6 @@ namespace Odev
             }
             return illegalMove;
         }
-
         internal int[] askSquare(int turn,bool player1)
         {
             if(player1)
@@ -59,11 +57,22 @@ namespace Odev
             square = new int[] {0,0};
             Console.Write("\nRow: ");
             square[0] = Convert.ToInt32(Console.ReadLine());
+            while(square[0]<1||square[0]>3)
+            {
+                Console.Write("\nERROR: Illegal move\nTry Again!\n\n");
+                Console.Write("\nRow: ");
+                square[0] = Convert.ToInt32(Console.ReadLine());
+            }
             Console.Write("Column: ");
             square[1] = Convert.ToInt32(Console.ReadLine());
+            while(square[1]<1||square[1]>3)
+            {
+                Console.Write("\nERROR: Illegal move\nTry Again!\n\n");
+                Console.Write("Column: ");
+                square[1] = Convert.ToInt32(Console.ReadLine());
+            }
             return square;
         }
-
         internal void letPlay()
         {
             int turn = 0;
@@ -106,41 +115,51 @@ namespace Odev
                 Console.Write("Its draw!\n");
             }
         }
-        
         internal bool controlWin(ref bool Player1win)
         {
             bool win = false;
             Player1win = false;
             for(int i=0;i<3;i++)
             {
-                if(playGround[i,0]==playGround[i,1]&&playGround[i,1]==playGround[i,2]&&playGround[i,0]==1)
+                if(playGround[i,0]==playGround[i,1]&&playGround[i,1]==playGround[i,2]&&playGround[i,0]!=0)
                 {
-                    Player1win = true;
+                    if(playGround[i,0]==1)
+                    {
+                        Player1win = true;
+                    }
                     win = true;
                     break;
                 }
-                else if(playGround[0,i]==playGround[1,i]&&playGround[2,i]==playGround[1,i]&&playGround[1,i]==1)
+                else if(playGround[0,i]==playGround[1,i]&&playGround[2,i]==playGround[1,i]&&playGround[1,i]!=0)
                 {
-                    Player1win = true;
+                    if(playGround[1,i]==1)
+                    {
+                        Player1win = true;
+                    }
                     win = true;
                     break;
                 }
             }
-            if(playGround[0,0]==playGround[1,1]&&playGround[1,1]==playGround[2,2]&&playGround[1,1]==1)
+            if(playGround[0,0]==playGround[1,1]&&playGround[1,1]==playGround[2,2]&&playGround[1,1]!=0)
             {
-                Player1win = true;
+                if(playGround[1,1]==1)
+                {
+                    Player1win = true;
+                }
                 win = true;
                 return win;
             }
-            else if(playGround[0,2]==playGround[1,1]&&playGround[1,1]==playGround[2,0]&&playGround[1,1]==1)
+            else if(playGround[0,2]==playGround[1,1]&&playGround[1,1]==playGround[2,0]&&playGround[1,1]!=0)
             {
-                Player1win = true;
+                if(playGround[1,1]==1)
+                {
+                    Player1win = true;
+                }
                 win = true;
                 return win;
             }
             return win;
         }
-
         internal void playGroundPrint()
         {
             Console.Write("\n");
@@ -155,5 +174,4 @@ namespace Odev
             Console.Write("\n");
         }
     }
-
 }
