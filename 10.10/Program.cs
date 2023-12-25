@@ -66,6 +66,40 @@ namespace Game
             MoveCount = 0;
         }
 
+        private string command_prompt = "₺ ";
+        internal void Play()
+        {
+            start:
+            Console.Write("Player {1}, select a square to play. (1-9)\n{0}", command_prompt, Player);
+            int square = 0;
+            try
+            {
+                square = int.Parse(Console.ReadLine());
+                if (square < 1 || square > 9)
+                {
+                    Console.Write("You must enter an integer between 1-9\n");
+                    goto start;
+                }
+            }
+            catch
+            {
+                Console.Write("You must enter an integer between 1-9\n");
+                goto start;
+            }
+
+            Result situation = NewMove(square);
+
+            if (situation == Result.Contiunes)
+            {
+                Play();
+                return;
+            }
+            if (situation == Result.ForbiddenMove)
+            {
+                Console.Write("This move is illegal.\nPlayer {1}, try again.\n{0}", command_prompt, Player);
+            }
+        }
+
         internal void PrintTable()
         {
             for(int row = 0; row < 3; row++)
