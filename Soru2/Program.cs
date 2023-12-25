@@ -6,42 +6,48 @@ namespace Workspace
     {
         internal static void Main()
         {
+            /*
             Rational rt1 = new Rational(154,217);
 
             Rational rt2 = new Rational(42,156);
 
             Rational rt3 = new Rational();
-            rt3 = Operations.Add(rt1, rt2);
-            Console.WriteLine("{0}/{1} + {2}/{3} = {4}/{5}",rt1.numerator,rt1.denominator,rt2.numerator,rt2.denominator,rt3.numerator,rt3.denominator);
-
+            rt3 = Rational.Add(rt1, rt2);
+            
             Rational rt4 = new Rational();
-            rt4 = Operations.Substract(rt1, rt2);
-            Console.WriteLine("{0}/{1} - {2}/{3} = {4}/{5}",rt1.numerator,rt1.denominator,rt2.numerator,rt2.denominator,rt4.numerator,rt4.denominator);
-
+            rt4 = Rational.Substract(rt1, rt2);
+            
             Rational rt5 = new Rational();
-            rt5 = Operations.Multiply(rt1, rt2);
-            Console.WriteLine("{0}/{1} * {2}/{3} = {4}/{5}",rt1.numerator,rt1.denominator,rt2.numerator,rt2.denominator,rt5.numerator,rt5.denominator);
-
+            rt5 = Rational.Multiply(rt1, rt2);
+            
             Rational rt6 = new Rational();
-            rt6 = Operations.Divide(rt1, rt2);
-            Console.WriteLine("{0}/{1} / {2}/{3} = {4}/{5}",rt1.numerator,rt1.denominator,rt2.numerator,rt2.denominator,rt6.numerator,rt6.denominator);
+            rt6 = Rational.Divide(rt1, rt2);
+            
+            rt1.Display();
+            rt2.Display();
+            rt3.Display();
+            rt4.Display();
+            rt5.Display();
+            rt6.Display();
+            rt6.DisplayFloatingPoint(3);
 
-            Operations.Display(rt6);
-            Operations.DisplayFloatingPoint(rt6,3);
-
-
+            Rational rt7 = new Rational();
+            rt7.Display();
+            */
         }
-        
     }
 
     internal class Rational
     {
-        internal int numerator;
+        private int numerator;
 
-        internal int denominator;
+        private int denominator;
 
         internal Rational()
-        {}
+        {
+            this.numerator  = 2;
+            this.denominator = 3;
+        }
 
         internal Rational(int numerator, int denominator)
         {
@@ -73,10 +79,19 @@ namespace Workspace
             this.numerator = numerator;
             this.denominator = denominator;
         }
-    }
 
-    internal class Operations
-    {
+        public void Display()
+        {
+            Console.WriteLine("{0}/{1}",this.numerator,this.denominator);
+        }
+
+        public void DisplayFloatingPoint(int precisionLimit)
+        {
+            double result = (double)  ((double)this.numerator/(double) this.denominator);
+            
+            Console.WriteLine("{0}",Math.Round(result, precisionLimit));
+        }
+
         public static Rational Add(Rational number1, Rational number2)
         {
             int new_numerator;
@@ -111,7 +126,6 @@ namespace Workspace
             return result;
         }
 
-        
         public static Rational Substract(Rational number1, Rational number2)
         {
             int new_numerator;
@@ -161,8 +175,6 @@ namespace Workspace
             return result;
         }
 
-        
-
         public static Rational Divide(Rational number1, Rational number2)
         {
             int new_numerator;
@@ -176,19 +188,5 @@ namespace Workspace
 
             return result;
         }
-
-        
-        public static void Display(Rational number)
-        {
-            Console.WriteLine("{0}/{1}",number.numerator,number.denominator);
-        }
-
-        public static void DisplayFloatingPoint(Rational number, int precisionLimit)
-        {
-            double result = (double)  ((double)number.numerator/(double) number.denominator);
-            
-            Console.WriteLine("{0}/{1} = {2}",number.numerator,number.denominator,Math.Round(result, precisionLimit));
-        }
-        
     }
 }
