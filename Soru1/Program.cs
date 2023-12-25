@@ -5,7 +5,6 @@ namespace Workspace
 {
     public class Hemisphere
     {
-        //Radius'a main icinde radius'a 0 ile 12 arası bir değer girilmezse otomatik 1 oluyor //Hata mı Vermeli yoksa bunu mu yapmalı ??
         private double radius = 1;
         public double Radius
         {
@@ -65,7 +64,7 @@ namespace Workspace
 
             //hemisphere1.Radius = 13;
 
-            Console.WriteLine("Volume1:            {0}  ||  Volume2:            {1}",hemisphere1.volume,hemisphere2.volume);
+            Console.WriteLine("Volume1:            {0}  ||  Volume2:            {1}",hemisphere1.Volume,hemisphere2.Volume);
             Console.WriteLine("CurvedSurfaceArea1: {0}   ||  CurvedSurfaceArea2: {1}",hemisphere1.CurvedSurfaceArea,hemisphere2.CurvedSurfaceArea);
             Console.WriteLine("TotalSurfaceArea1:  {0}    ||  TotalSurfaceArea2:  {1}",hemisphere1.TotalSurfaceArea,hemisphere2.TotalSurfaceArea);
 
